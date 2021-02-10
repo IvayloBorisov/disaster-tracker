@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ReactMapGL from "react-map-gl";
-import { LocationMarker, PopupComponent } from "../index";
+import { LocationMarker } from "../index";
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
