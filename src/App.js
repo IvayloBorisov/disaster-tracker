@@ -15,7 +15,6 @@ const App = () => {
       setEventData(events.flat());
       setLoading(false);
     }
-
     getData();
 
   }, []);
