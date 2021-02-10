@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { MapComponent } from './components/index';
+import { MapComponent, Loading } from './components/index';
 
 const App = () => {
 
@@ -11,6 +11,7 @@ const App = () => {
       setLoading(true);
       const fetchData = await fetch("https://eonet.sci.gsfc.nasa.gov/api/v2.1/events");
       const { events } = await fetchData.json();
+
       setEventData(events.flat());
       setLoading(false);
     }
@@ -23,7 +24,7 @@ const App = () => {
 
   return (
     <div>
-      <MapComponent eventData={ eventData }/>
+      { !loading ? <MapComponent eventData={ eventData }/> : <Loading />}
     </div>
   );
 }
