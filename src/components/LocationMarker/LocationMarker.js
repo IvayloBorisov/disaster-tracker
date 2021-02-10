@@ -19,17 +19,6 @@ const LocationMarker = ({ geometries, categories }) => {
   }
 
   return longitude && latitude ? (
-<<<<<<< HEAD
-    <Marker latitude={latitude} longitude={longitude}>
-      <div>
-        <img
-          src={process.env.PUBLIC_URL + `/icons/${title}.png`}
-          alt={`${title}-icon`}
-          style={{ width: "20px" }}
-        />
-      </div>
-    </Marker>
-=======
     <>
       <Marker latitude={latitude} longitude={longitude}>
         <div onClick={() => openPopup({latitude, longitude, title})}>
@@ -45,7 +34,6 @@ const LocationMarker = ({ geometries, categories }) => {
         <PopupComponent handleClose={closePopup} {...selectedEvent}/>
       )}
     </>
->>>>>>> feat/popup
   ) : (
     ""
   );
