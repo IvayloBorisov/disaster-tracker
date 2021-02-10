@@ -5,7 +5,7 @@ const Loading = () => {
 
     return(
         <div className={styles.container}>
-          <img className={styles.spinner} src={spinner} alt="loading..." />
+          <img src={spinner} alt="loading..." />
         </div>
     )
 }
