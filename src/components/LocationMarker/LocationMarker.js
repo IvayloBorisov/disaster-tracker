@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { PopupComponent } from "../index";
 import { Marker } from "react-map-gl";
+import styles from './LocationMarker.module.css';
 
 const LocationMarker = ({ geometries, categories }) => {
 
@@ -23,10 +24,9 @@ const LocationMarker = ({ geometries, categories }) => {
       <Marker latitude={latitude} longitude={longitude}>
         <div onClick={() => openPopup({latitude, longitude, title})}>
           <img
-            style={{zIndex: "0"}}
+            className={styles.icon}
             src={process.env.PUBLIC_URL + `/icons/${iconName}.png`}
             alt={`${title}-icon`}
-            style={{ width: "40px" }}
           />
         </div>
       </Marker>
