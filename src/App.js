@@ -23,7 +23,7 @@ const App = () => {
 
   return (
     <div>
-      { loading ? <MapComponent eventData={ eventData }/> : <Loading />}
+      { !loading ? <Loading /> :<MapComponent eventData={ eventData }/> 
     </div>
   );
 }
