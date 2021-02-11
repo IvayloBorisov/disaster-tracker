@@ -8,10 +8,12 @@
     content: "";
     display: block;
     width: 100%;
-    border-bottom: 2px solid aqua;
+    border-bottom: 2px solid red;
     margin: 0.5em 0;
 }
 
-.subtitle {
+.subtitle,
+.coordinates {
     font-weight: 600;
 }
+
