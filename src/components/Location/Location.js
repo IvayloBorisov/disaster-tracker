@@ -1,6 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import { LocationMarker } from '../index';
-
 
 const API_KEY = process.env.REACT_APP_GEOCAGE_API_KEY;
 
@@ -39,7 +37,7 @@ const Location = () => {
                     <input name={'address'}/>
                 </div>
             </form>
-            <button onClick={handleClick} type="submit">GEt Location</button>
+            <button onClick={handleClick} type="submit">Get Location</button>
         </div>
     )
 }

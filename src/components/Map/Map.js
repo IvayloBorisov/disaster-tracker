@@ -5,7 +5,6 @@ import { LocationMarker, PopupComponent, Location } from "../index";
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
 const MapComponent = ({ eventData }) => {
-
   const [locationInfo, setLocationInfo] = useState(null);
   const [viewport, setViewport] = useState({
     width: "100vw",
@@ -25,23 +24,32 @@ const MapComponent = ({ eventData }) => {
       latitude,
       title,
     };
-    return <LocationMarker key={event.id} {...eventInfo} onClick={() => setLocationInfo({...eventInfo})} />;
+    return (
+      <LocationMarker
+        key={event.id}
+        {...eventInfo}
+        onClick={() => setLocationInfo({ ...eventInfo })}
+      />
+    );
   });
-
-  console.log(locationInfo)
 
   return (
     <div>
-      <ReactMapGL
-        {...viewport}
-        mapboxApiAccessToken={MAPBOX_TOKEN}
-        mapStyle="mapbox://styles/ivoborisov/ckktptabb2du117qkyo4jg5tq"
-        onViewportChange={(viewport) => setViewport(viewport)}
-      >
-       {markers}
-        <Location />
-      {locationInfo && <PopupComponent {...locationInfo}/>}
-      </ReactMapGL>
+        <ReactMapGL
+          {...viewport}
+          mapboxApiAccessToken={MAPBOX_TOKEN}
+          mapStyle="mapbox://styles/ivoborisov/ckktptabb2du117qkyo4jg5tq"
+          onViewportChange={(viewport) => setViewport(viewport)}
+        >
+          {markers}
+          <Location />
+          {locationInfo && (
+            <PopupComponent
+              {...locationInfo}
+              onClick={() => setLocationInfo(null)}
+            />
+          )}
+        </ReactMapGL>      
     </div>
   );
 };

@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 import { Popup } from "react-map-gl";
-import styles from './Popup.module.css';
+import styles from "./Popup.module.css";
 
 const API_KEY = process.env.REACT_APP_GEOCAGE_API_KEY;
 
-const PopupComponent = ({ latitude, longitude, title }) => {
-  console.log(latitude, longitude, title)
+const PopupComponent = ({ latitude, longitude, title, onClick }) => {
   const [address, setAddress] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -22,19 +21,22 @@ const PopupComponent = ({ latitude, longitude, title }) => {
   }, [latitude, longitude]);
 
   return (
-    loading &&
-    <Popup
-      className={styles.popup}
-      offsetLeft= {20}
-      offsetTop= {10}
-      closeButton= {false}
-      closeOnClick= {true}
-      latitude= {latitude}
-      longitude= {longitude}
-    >
-      <h3>{title}</h3>
-      <p><span className={styles.subtitle}>Address:</span> {address}</p>
-    </Popup>
+    loading && (
+      <Popup
+        className={styles.popup}
+        offsetLeft={20}
+        offsetTop={10}
+        latitude={latitude}
+        longitude={longitude}
+      >
+        <div onClick={onClick}>
+          <h3>{title}</h3>
+          <p>
+            <span className={styles.subtitle}>Address:</span> {address}
+          </p>
+        </div>
+      </Popup>
+    )
   );
 };
 
