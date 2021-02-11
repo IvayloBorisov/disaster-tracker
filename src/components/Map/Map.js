@@ -15,13 +15,15 @@ const MapComponent = ({ eventData }) => {
   });
 
   const markers = eventData.map((event) => {
-    const { geometries, categories } = event;
+    const { geometries, categories, title } = event;
     const longitude = geometries[0].coordinates[0];
     const latitude = geometries[0].coordinates[1];
-    const title = categories[0].title;
+    const disasterCategory = categories[0].title;
+    console.log(event)
     const eventInfo = {
       longitude,
       latitude,
+      disasterCategory,
       title,
     };
     return (

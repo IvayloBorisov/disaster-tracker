@@ -1,9 +1,9 @@
 import { Marker } from "react-map-gl";
 import styles from './LocationMarker.module.css';
 
-const LocationMarker = ({ latitude, longitude, title, onClick }) => {
+const LocationMarker = ({ latitude, longitude, disasterCategory, onClick }) => {
 
-  const iconName = title.split(" ")[0].toLowerCase();
+  const iconName = disasterCategory.split(" ")[0].toLowerCase();
 
   return(
     longitude && latitude ?
@@ -12,7 +12,7 @@ const LocationMarker = ({ latitude, longitude, title, onClick }) => {
           <img
             className={styles.icon}
             src={process.env.PUBLIC_URL + `/icons/${iconName}.png`}
-            alt={`${title}-icon`}
+            alt={`${disasterCategory}-icon`}
           />
         </div>
       </Marker>
