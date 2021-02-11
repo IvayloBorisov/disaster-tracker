@@ -7,6 +7,7 @@ const App = () => {
   const [ loading, setLoading ] = useState(false);
 
   useEffect(() => {
+
     const getData = async () => {
       const fetchData = await fetch("https://eonet.sci.gsfc.nasa.gov/api/v2.1/events");
       const { events } = await fetchData.json();
@@ -22,7 +23,7 @@ const App = () => {
 
   return (
     <div>
-      { !loading ? <Loading /> :<MapComponent eventData={ eventData }/> }
+      { !loading ? <Loading /> :<MapComponent eventData={ eventData }/> 
     </div>
   );
 }
