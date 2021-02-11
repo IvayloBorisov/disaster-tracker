@@ -4,10 +4,6 @@
     font-size: 14px;
 }
 
-.title {
-    width: 100%;
-}
-
 .title::after {
     content: "";
     display: block;

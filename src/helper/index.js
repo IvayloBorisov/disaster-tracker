@@ -1,3 +1,5 @@
-export const convertObjectToArr = (obj) => {
-    return Object.values(obj).reverse();
+export const capitalize = string => {
+    return string.toUpperCase();
 }
+
+console.log(capitalize("asss, fsd"))

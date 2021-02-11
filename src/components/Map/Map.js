@@ -1,6 +1,6 @@
 import { useState } from "react";
 import ReactMapGL from "react-map-gl";
-import { LocationMarker, PopupComponent, Location } from "../index";
+import { LocationMarker, PopupComponent, Location, Header } from "../index";
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
@@ -35,6 +35,7 @@ const MapComponent = ({ eventData }) => {
 
   return (
     <div>
+        <Header />
         <ReactMapGL
           {...viewport}
           mapboxApiAccessToken={MAPBOX_TOKEN}
