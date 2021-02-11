@@ -23,14 +23,15 @@ const PopupComponent = ({ latitude, longitude, title, onClick }) => {
   return (
     loading && (
       <Popup
-        className={styles.popup}
+      className={styles.popup}
         offsetLeft={20}
         offsetTop={10}
+        closeButton= {false}
         latitude={latitude}
         longitude={longitude}
       >
-        <div onClick={onClick}>
-          <h3>{title}</h3>
+        <div  onClick={onClick}>
+          <h3 className={styles.title}>{title}</h3>
           <p>
             <span className={styles.subtitle}>Address:</span> {address}
           </p>
