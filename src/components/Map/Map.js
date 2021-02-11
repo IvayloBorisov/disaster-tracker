@@ -1,10 +1,12 @@
 import { useState } from "react";
 import ReactMapGL from "react-map-gl";
-import { LocationMarker } from "../index";
+import { LocationMarker, PopupComponent, Location } from "../index";
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 
 const MapComponent = ({ eventData }) => {
+
+  const [locationInfo, setLocationInfo] = useState(null);
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "100vh",
@@ -13,7 +15,20 @@ const MapComponent = ({ eventData }) => {
     zoom: 4,
   });
 
-  
+  const markers = eventData.map((event) => {
+    const { geometries, categories } = event;
+    const longitude = geometries[0].coordinates[0];
+    const latitude = geometries[0].coordinates[1];
+    const title = categories[0].title;
+    const eventInfo = {
+      longitude,
+      latitude,
+      title,
+    };
+    return <LocationMarker key={event.id} {...eventInfo} onClick={() => setLocationInfo({...eventInfo})} />;
+  });
+
+  console.log(locationInfo)
 
   return (
     <div>
@@ -23,7 +38,9 @@ const MapComponent = ({ eventData }) => {
         mapStyle="mapbox://styles/ivoborisov/ckktptabb2du117qkyo4jg5tq"
         onViewportChange={(viewport) => setViewport(viewport)}
       >
-        {eventData.map(event => <LocationMarker key={event.id} {...event} />)}
+       {markers}
+        <Location />
+      {locationInfo && <PopupComponent {...locationInfo}/>}
       </ReactMapGL>
     </div>
   );

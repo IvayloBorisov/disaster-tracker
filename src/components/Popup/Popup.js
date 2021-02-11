@@ -4,7 +4,8 @@ import styles from './Popup.module.css';
 
 const API_KEY = process.env.REACT_APP_GEOCAGE_API_KEY;
 
-const PopupComponent = ({ latitude, longitude, title, handleClose }) => {
+const PopupComponent = ({ latitude, longitude, title }) => {
+  console.log(latitude, longitude, title)
   const [address, setAddress] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -27,7 +28,7 @@ const PopupComponent = ({ latitude, longitude, title, handleClose }) => {
       offsetLeft= {20}
       offsetTop= {10}
       closeButton= {false}
-      onClose= {() => handleClose(null)}
+      closeOnClick= {true}
       latitude= {latitude}
       longitude= {longitude}
     >

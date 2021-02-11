@@ -8,12 +8,11 @@ const App = () => {
 
   useEffect(() => {
     const getData = async () => {
-      setLoading(true);
       const fetchData = await fetch("https://eonet.sci.gsfc.nasa.gov/api/v2.1/events");
       const { events } = await fetchData.json();
 
       setEventData(events.flat());
-      setLoading(false);
+      setLoading(true);
     }
     getData();
 
@@ -23,7 +22,7 @@ const App = () => {
 
   return (
     <div>
-      { !loading ? <MapComponent eventData={ eventData }/> : <Loading />}
+      { !loading ? <Loading /> :<MapComponent eventData={ eventData }/> }
     </div>
   );
 }
