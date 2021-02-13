@@ -11,8 +11,6 @@ const PopupComponent = ({
   return (
       <Popup
         className={styles.popup}
-        offsetLeft={20}
-        offsetTop={10}
         closeButton={false}
         latitude={latitude}
         longitude={longitude}
