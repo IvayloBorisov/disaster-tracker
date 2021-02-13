@@ -1,0 +1,46 @@
+.container {
+    top: 0;
+    right: 10;
+    position: absolute;
+    padding: 1em;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    border: 1px solid #000;
+    width: 15%;
+}
+
+.form-fields-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+
+.form-label {
+    font-weight: 600;
+}
+
+.form-input {
+    margin-bottom: 5px;
+    width: 100%;
+    border: 1px solid #000;
+}
+
+.button {
+    cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+    background-color: red;
+    border: none;
+}
+
+.form-input,
+.button {
+    padding: 0.5em;
+    border-radius: 5px;
+    outline: none;
+}
+
+
