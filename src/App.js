@@ -15,15 +15,14 @@ const App = () => {
       setEventData(events.flat());
       setLoading(true);
     }
-    getData();
-
+    getData()
   }, []);
 
   console.log(eventData)
 
   return (
     <div>
-      { !loading ? <Loading /> :<MapComponent eventData={ eventData }/>}
+        { !loading ? <Loading /> :<MapComponent eventData={ eventData }/>}
     </div>
   );
 }
