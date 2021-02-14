@@ -3,6 +3,11 @@ import ReactMapGL, { FlyToInterpolator } from "react-map-gl";
 import * as d3 from "d3-ease";
 import { LocationMarker, PopupComponent, Header, NavControl } from "../index";
 import styles from "./Map.module.css";
+import mapboxgl from 'mapbox-gl';
+
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
+
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 const API_KEY = process.env.REACT_APP_GEOCAGE_API_KEY;
