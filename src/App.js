@@ -18,8 +18,6 @@ const App = () => {
     getData()
   }, []);
 
-  console.log(eventData)
-
   return (
     <div>
         { !loading ? <Loading /> :<MapComponent eventData={ eventData }/>}
