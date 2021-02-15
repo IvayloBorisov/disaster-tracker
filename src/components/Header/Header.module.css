@@ -1,12 +1,24 @@
 .container {
-    width: 100%;
-    background-color: red;
-    text-align: center;
+  width: 100%;
+  background-color: #ed4545;
+  text-align: center;
 }
 
 .title {
-    padding: 0.5em;
-    font-weight: 900;
-    font-size: 24px;
+  padding: 0.5em;
+  font-weight: 900;
+  font-size: 24px;
+  color: #fff;
+}
+
+.hidden {
+  background-color: #842020;
+  color: #842020;
+}
+@media (min-width: 400px) {
+    
+  .hidden {
     color: #fff;
+    background-color: #ed4545;
+  }
 }
