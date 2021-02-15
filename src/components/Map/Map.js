@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import ReactMapGL, { FlyToInterpolator } from "react-map-gl";
 import * as d3 from "d3-ease";
-import { LocationMarker, PopupComponent, Header, NavControl, ErrorMessage } from "../index";
+import { LocationMarker, PopupComponent, Header, NavControl, ErrorMessage, Button } from "../index";
 import styles from "./Map.module.css";
 import mapboxgl from 'mapbox-gl';
 
@@ -66,16 +66,16 @@ const MapComponent = ({ eventData }) => {
             `https://api.opencagedata.com/geocode/v1/json?q=${inputAddress}&key=${API_KEY}`
           );
           const { results } = await fetchCoordinates.json();
-          console.log(results);
           setLatitudeAddress(results[0].geometry.lat);
           setLongitudeAddress(results[0].geometry.lng);
+
+          if(results) { setHasError(false) }
         } catch (error) {
           setHasError(true);
-          console.log(error)
         }
       };
-      // setHasError(false);
       getCoordinates();
+
 
       if (latitudeAddress && longitudeAddress) {
         goToAddress(latitudeAddress, longitudeAddress);
@@ -83,17 +83,18 @@ const MapComponent = ({ eventData }) => {
     }
   }, [inputAddress, latitudeAddress, longitudeAddress]);
 
-  const handleClick = (event) => {
-    const input = inputValue.current;
-    setInputAddress(input.value);
-    input.value = "";
-    
-    console.log(event);
-    setHasError(false);
-
+  const handleClick = event => {
+    if(event.target.name === "error") {
+      return setHasError(false);
+    }
+    if(event.target.name === "location" || event.key === "Enter") {
+      const input = inputValue.current;
+      setInputAddress(input.value);
+      input.value = "";
+    }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     event.preventDefault();
   };
 
@@ -124,12 +125,11 @@ const MapComponent = ({ eventData }) => {
                 className= {styles["form-input"]}
                 name= {"address"}
                 placeholder= {"Berlin Germany"}
+                onKeyDown={handleClick}
               />
             </div>
           </form>
-          <button className={styles.button} onClick={handleClick} type="submit">
-            Get Location
-          </button>
+          <Button onClick={handleClick} name={"location"} content={"Get location"} />
         </div>
       </ReactMapGL>
     </div>

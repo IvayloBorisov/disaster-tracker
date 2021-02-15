@@ -26,21 +26,11 @@
     margin-bottom: 5px;
     width: 100%;
     border: 1px solid #000;
-}
-
-.button {
-    cursor: pointer;
-    color: #fff;
-    font-weight: 600;
-    background-color: red;
-    border: none;
-}
-
-.form-input,
-.button {
     padding: 0.5em;
     border-radius: 5px;
     outline: none;
 }
+
+
 
 
