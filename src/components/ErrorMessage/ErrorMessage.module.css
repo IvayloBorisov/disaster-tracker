@@ -1,0 +1,47 @@
+.container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    padding: 3em;
+    border-radius: 15px;
+}
+
+.title {
+    letter-spacing: 2px; 
+}
+
+.message {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.title,
+.message {
+    color: #fff;
+}
+
+.btn {
+    background-color: #fff;
+    color: red;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0.5em 3em;
+    border-radius: 5px;
+    margin-top: 0.5em;
+    outline: none;
+}
+
