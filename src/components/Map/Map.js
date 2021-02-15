@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import ReactMapGL, { FlyToInterpolator } from "react-map-gl";
 import * as d3 from "d3-ease";
-import { LocationMarker, PopupComponent, Header, NavControl } from "../index";
+import { LocationMarker, PopupComponent, Header, NavControl, ErrorMessage } from "../index";
 import styles from "./Map.module.css";
 import mapboxgl from 'mapbox-gl';
 
 // eslint-disable-next-line import/no-webpack-loader-syntax
 mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
-
 
 const MAPBOX_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 const API_KEY = process.env.REACT_APP_GEOCAGE_API_KEY;
@@ -18,6 +17,7 @@ const MapComponent = ({ eventData }) => {
   const [inputAddress, setInputAddress] = useState(null);
   const [longitudeAddress, setLongitudeAddress] = useState(null);
   const [latitudeAddress, setLatitudeAddress] = useState(null);
+  const [ hasError, setHasError ] = useState(false);
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "92vh",
@@ -61,14 +61,20 @@ const MapComponent = ({ eventData }) => {
   useEffect(() => {
     if (inputAddress) {
       const getCoordinates = async () => {
-        const fetchCoordinates = await fetch(
-          `https://api.opencagedata.com/geocode/v1/json?q=${inputAddress}&key=${API_KEY}`
-        );
-        const { results } = await fetchCoordinates.json();
-        console.log(results);
-        setLatitudeAddress(results[0].geometry.lat);
-        setLongitudeAddress(results[0].geometry.lng);
+        try {
+          const fetchCoordinates = await fetch(
+            `https://api.opencagedata.com/geocode/v1/json?q=${inputAddress}&key=${API_KEY}`
+          );
+          const { results } = await fetchCoordinates.json();
+          console.log(results);
+          setLatitudeAddress(results[0].geometry.lat);
+          setLongitudeAddress(results[0].geometry.lng);
+        } catch (error) {
+          setHasError(true);
+          console.log(error)
+        }
       };
+      // setHasError(false);
       getCoordinates();
 
       if (latitudeAddress && longitudeAddress) {
@@ -77,10 +83,14 @@ const MapComponent = ({ eventData }) => {
     }
   }, [inputAddress, latitudeAddress, longitudeAddress]);
 
-  const handleClick = () => {
+  const handleClick = (event) => {
     const input = inputValue.current;
     setInputAddress(input.value);
     input.value = "";
+    
+    console.log(event);
+    setHasError(false);
+
   };
 
   const handleSubmit = (event) => {
@@ -98,6 +108,7 @@ const MapComponent = ({ eventData }) => {
       >
         {markers}
         <NavControl />
+        {hasError && <ErrorMessage onClick= {handleClick} />}
         {locationInfo && (
           <PopupComponent
             {...locationInfo}
