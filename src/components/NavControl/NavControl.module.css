@@ -1,6 +1,15 @@
 .container {
-    bottom: 3em;
+    bottom: 5em;
     left: 0;
 }
+
+@media(min-width: 400px) {
+
+    .container {
+        bottom: 3em;
+    }
+}
+
+
 
 
