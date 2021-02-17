@@ -27,7 +27,7 @@ With these commands you will install every dependencies, which are necessary and
 
 ## Usage
 When the app was started you can look a world map with different kind natural disasters on it. You can navigate through whole map, zoom in, zoom out. When you clicked on an some icon, you will read more information about this disaster. 
-![](src/repo_image/home)
+![](src/repo_image/home.png)
 
 The application it has a geocoder functionality, you have to write an address in input field. If the  [OpenCage API](https://opencagedata.com/) for some reason can`t locate the address, then the app will throw an error
 ![](https://github.com/IvayloBorisov/disasters-tracker/blob/master/src/repo_image/error)
