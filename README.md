@@ -26,7 +26,7 @@ npm start
 With these commands you will install every dependencies, which are necessary and the application will start on address localhost:3000.
 
 ## Usage
-When the app was started you can look a world map with different kind natural disasters on it. You can navigate through whole map, zoom in, zoom out. When you clicked on an some icon, you will read more information about this disaster. 
+When the app was started you can look a world map with different kind natural disasters on it. You can navigate through the whole map, zoom in, zoom out. When you click on an icon, you will read more information about this disaster. 
 
 ![](src/repo_image/home.png)
 
