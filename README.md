@@ -30,7 +30,7 @@ When the app was started you can look a world map with different kind natural di
 ![](src/repo_image/home.png)
 
 The application it has a geocoder functionality, you have to write an address in input field. If the  [OpenCage API](https://opencagedata.com/) for some reason can`t locate the address, then the app will throw an error
-![](https://github.com/IvayloBorisov/disasters-tracker/blob/master/src/repo_image/error)
+![](src/repo_image/error.png)
 
 
 
